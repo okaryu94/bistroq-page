@@ -1,0 +1,622 @@
+@charset "UTF-8";
+body {
+  font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+  font-size: 14px;
+  line-height: 1.8;
+  letter-spacing: 0.05em;
+  color: #333;
+}
+
+a {
+  color: #333;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  vertical-align: bottom;
+  object-fit: cover; 
+}
+
+ul {
+  margin-left:15px;
+}
+
+header {
+  /*ここで、背景の大きさと色を指定*/
+  width: 100%;
+  height: 85px;
+  background-color: rgb(0, 0, 0);
+  /*ヘッダーを上部に固定*/
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+}
+
+header div {
+  /*ここで、メインコンテンツの大きさと色と配置を指定*/
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  /*タブレット端末のときだけ縦ならび*/
+}
+
+@media screen and (min-width: 768px) {
+  header div {
+    position: static;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  header div {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    /*PC画面以上のときだけ横並びに戻す*/
+  }
+}
+
+.header-logo {
+  line-height: 1;
+  margin: 10px 30px;
+  color: #fff;
+}
+
+@media screen and (max-width: 575px) {
+  .header-logo {
+    width: 250px;
+  }
+}
+
+.header-logo a {
+  color: #fff;
+}
+
+.header-btn {
+  width: 32px;
+  height: 20px;
+  margin-right: 30px;
+  padding-right: 5px;
+  background: none;
+  display: block;
+  z-index: 500;
+  /*以下ハンバーガーメニュー*/
+  /*タブレット以上の端末でハンバーガー非表示*/
+}
+
+.header-btn span {
+  position: relative;
+  display: block;
+  height: 2px;
+  background: #fff;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+
+.header-btn span::before, .header-btn span::after {
+  position: absolute;
+  left: 0;
+  content: "";
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: #fff;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+
+.header-btn span::before {
+  top: -10px;
+}
+
+.header-btn span::after {
+  bottom: -10px;
+}
+
+@media screen and (min-width: 768px) {
+  .header-btn {
+    display: none;
+  }
+}
+
+.header-gnav {
+  margin-top: 85px;
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  /*初期位置を右画面外に配置*/
+  right: -100%;
+  -webkit-transition: all .5s;
+  transition: all .5s;
+  /*モバイル以外のとき、絶対配置を解除し、画面内に*/
+}
+
+@media screen and (min-width: 768px) {
+  .header-gnav {
+    margin-top: 0;
+    width: auto;
+    height: auto;
+    position: static;
+  }
+}
+
+.header-gnav-list a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 8px 24px;
+  font-size: 15px;
+  border-bottom: 1px solid #fff;
+  color: #fff;
+}
+
+@media screen and (min-width: 768px) {
+  .header-gnav-list {
+    margin: 0 30px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    border: none;
+  }
+  .header-gnav-list a {
+    border: none;
+    padding: 0 15px;
+  }
+  .header-gnav-list a:hover {
+    color: #c2b35c;
+    background-color: #fff;
+  }
+}
+
+.is-openMenu .header-btn span {
+  background: transparent;
+}
+
+.is-openMenu .header-btn span::before {
+  top: 0;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.is-openMenu .header-btn span::after {
+  top: 0;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+.is-openMenu .header-gnav {
+  right: 0;
+  background-color: #333;
+}
+
+.wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+
+/*メイン*/
+.mv {
+    margin-top:85px;
+    height: 300px;
+    background: url("main-visual.jpg");
+  }
+
+.mv-contents{
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    height:300px;
+}  
+
+  .big-img {
+    -o-object-fit: cover;
+       object-fit: cover;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .mv h2 {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1;
+    margin-bottom: 10px;
+    color: #fff;
+    font-size: 9vw;
+    font-weight: lighter;
+    text-shadow: 3px 3px 3px #333;
+  }
+  .mv p{
+    line-height: 1;
+    margin-bottom: 10px;
+    color: #fff;
+    font-size: 3vw;
+    font-weight: lighter;
+    text-shadow: 3px 3px 3px #333;
+  }
+  
+  /*セクションデザイン*/
+  .section {
+    background-color: #333;
+    padding: 25px 30px;
+  }
+  
+  
+
+
+  .contents-frame {
+    padding: 0 30px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    margin-bottom: 30px;
+  }
+  
+  .contents-frame h2 {
+    font-weight: lighter;
+    color: #c2b35c;
+    text-align: center;
+    font-size: 30px;
+    margin: 30px 0 0;
+  }
+  
+  .contents-frame span {
+    color: #fff;
+    font-size: 40px;
+    margin: 20px 0;
+    padding: 5px;
+    width:100%;
+    text-align:center;
+  }
+  
+  .contents-frame p {
+    text-align: center;
+    color: #fff;
+    font-size: 20px;
+    margin-bottom: 50px;
+  }
+  
+  .contents-frame div {
+
+    text-align: justify;
+    color: #fff;
+    font-size: 16px;
+    font-weight: lighter;
+    line-height: 2;
+  }
+  
+  .contents-frame .btn {
+    font-size: 16px;
+    font-weight: bold;
+    color: #c2b35c;
+    text-align: center;
+    max-width: 280px;
+    width: 60%;
+    margin: 20px auto;
+    padding: 4px 0;
+    border: 1px solid #c2b35c;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+  }
+  
+  .contents-frame .btn:hover {
+    color: #fff;
+    background-color: #c2b35c;
+  }
+
+  @media (max-width:740px) {
+    .contents-frame{
+      padding:0;
+    }
+
+    .contents-frame h2 {
+      margin: 30px 0 0;
+    }
+    
+  }
+
+  h3{
+    font-size:20px;
+    color:#c2b35c;
+    text-align:center;
+    margin:0 auto 30px;
+  }
+  
+  figure{
+    position: relative;
+    overflow: hidden;
+  }
+  figcaption {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    -webkit-transition: .3s;
+    transition: .3s;
+    opacity: 0;
+  
+    color:#FFF;
+    text-align:center;
+    padding:30% 0;
+  }
+  figure:hover figcaption {
+    opacity: 1;
+  }
+
+/*シチュエーション*/
+.situ-items{
+  display:flex;
+  justify-content: space-between;
+  
+}
+
+
+
+.situ-item{
+  background-color: #000;
+  width:32%;
+  padding:30px;
+  margin-bottom:30px;
+}
+
+.situ-item div{
+  text-align: center;
+}
+
+
+@media (max-width: 740px){
+  .situ-items{
+  display:block;
+  }
+  .situ-item{
+    width:100%;
+  }
+}
+
+/*メニュー*/
+
+
+
+.menu-items{
+  display:flex;
+  justify-content: space-between; 
+  
+  
+}
+
+.menu-items a{
+  background-color:#000;
+  border: 1px solid #000;
+  margin-bottom:30px;
+  width:100%;
+}
+
+.menu-items p{
+  margin-bottom:0px;
+  background-color: #c2b35c;
+}
+
+.menu-items div{
+  padding:30px;
+}
+
+.menu-items img{
+  width: 100%;
+  height:30vh;
+  
+}
+
+
+
+@media (max-width: 740px){
+  .menu-items{
+    flex-direction: column;
+  }
+  
+}
+
+/*店舗*/
+.floor-items{
+  display:flex;
+  justify-content: space-between;
+  margin-bottom:30px;
+  background-color: #000;
+}
+
+.floor-info {
+  width: 26%;
+  padding: 30px;
+}
+
+
+
+.floor-img{
+  width:74%;
+}
+
+
+@media (max-width: 960px){
+  .floor-items{
+    flex-direction: column;
+  }
+  .floor-info,.floor-img{
+    width:100%;
+  }
+}
+
+/*地図*/
+
+.map {
+  margin: 30px calc(50% - 50vw) ;
+  width: 100vw;
+  height: 600px;
+}
+
+@media (max-width: 740px) {
+  .map {
+    height: 300px;
+  }
+}
+
+/*FAQ*/
+
+.cp_qa *, 
+.cp_qa *:after, 
+.cp_qa *:before {
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+}
+.cp_qa {
+	overflow-x: hidden;
+	margin: 0 auto;
+	color: #333333;
+}
+.cp_qa .cp_actab {
+	padding: 20px 0;
+	border-bottom: 1px dotted  #c2b35c;
+}
+.cp_qa label {
+	font-size: 16px;
+	position: relative;
+	display: block;
+	width: 100%;
+	margin: 0;
+	padding: 10px 10px 0 48px;
+	cursor: pointer;
+}
+.cp_qa .cp_actab-content {
+	font-size: 14px;
+	position: relative;
+	overflow: hidden;
+	height: 0;
+	margin: 0 40px;
+	padding: 0 14px;
+	-webkit-transition: 0.4s ease;
+	        transition: 0.4s ease;
+	opacity: 0;
+}
+.cp_qa .cp_actab input[type=checkbox]:checked ~ .cp_actab-content {
+	height: auto;
+	padding: 14px;
+	opacity: 1;
+}
+.cp_qa .cp_plus {
+	font-size: 2.4em;
+  line-height: 100%;
+  color: #c2b35c;
+	position: absolute;
+	z-index: 5;
+	margin: 3px 0 0 10px;
+	-webkit-transition: 0.2s ease;
+	        transition: 0.2s ease;
+}
+.cp_qa .cp_actab input[type=checkbox]:checked ~ .cp_plus {
+	-webkit-transform: rotate(45deg);
+	        transform: rotate(45deg);
+}
+.cp_qa .cp_actab input[type=checkbox] {
+  display: none;
+}
+
+.cp_actab span{
+  font-size:1.7em;
+}
+
+
+
+/*連絡フォーム*/
+.form{
+  background: url("main-visual.jpg");
+  background-color:rgba(100,100,100,1);
+  background-blend-mode: multiply;
+}
+
+.form div{
+  margin-bottom:14px;
+}
+
+.form label{
+  font-size:1.125rem;
+  margin-bottom:14px;
+  display:block;
+}
+
+input[type="form"],
+textarea{
+  background:rgba(255,255,255,0.5);
+  border:1px solid #fff;
+  border-radius:5px;
+  padding:10px;
+  font-size:1rem;
+}
+
+input[type="form"],{
+  width:100%;
+  max-width:300px;
+}
+textarea{
+  width:100%;
+  max-width: 720px;
+  height:10rem;
+}
+
+input[type="submit"]{
+  border:none;
+  cursor:pointer;
+}
+
+  /*フッター*/
+  
+footer {
+    background-color: #333;
+  }
+  
+  .footer-logo {
+    margin: 0 30px;
+    text-align: center;
+  }
+  
+  .footer-logo a {
+    font-size: 2em;
+    font-weight: bold;
+    color: #c2b35c;
+    text-decoration: none;
+  }
+  
+  footer .copyright {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    height: auto;
+    font-size: 12px;
+  }
+  
+  footer .copyright a {
+    color: white;
+  }
+  /*# sourceMappingURL=style.css.map */
